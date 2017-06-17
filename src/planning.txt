@@ -1,0 +1,16 @@
+car:
+  num
+  name
+  level
+  pic
+  passengers
+  cargo
+  happiness:
+    food
+    comfort
+    entertainment
+    facilities (potty)
+  weight
+  perk
+    gonna need some special composition to "optimize" with this
+    
