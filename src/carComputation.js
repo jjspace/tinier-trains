@@ -53,6 +53,11 @@ class Computations extends Component {
         comfort: this.calcTrainAttr(trainCars, 'comfort'),
         entertainment: this.calcTrainAttr(trainCars, 'entertainment'),
         facilities: this.calcTrainAttr(trainCars, 'facilities'),
+        happiness: this.calcTrainAttr(trainCars, 'food') +
+        this.calcTrainAttr(trainCars, 'comfort') +
+        this.calcTrainAttr(trainCars, 'entertainment') +
+        this.calcTrainAttr(trainCars, 'facilities'),
+        maxHappiness: this.calcTrainAttr(trainCars, 'passengers') * 4,
       },
     });
   }
@@ -104,15 +109,39 @@ class Computations extends Component {
                 </tbody>
               </table>
             </div>
-            <div className="row">
-              <div className="col-xs-12">
-                <div className="progress">
-                  <div className="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style={{ width: this.state.train.comfort + '%' }}>
-                    <span>{this.state.train.comfort}</span>
-                  </div>
-                </div>
-                <Progress value={this.state.train.comfort} max={100} />
-              </div>
+          </div>
+          <div className="row">
+            <div className="col-xs-12">
+              <div>Food:</div>
+              <Progress
+                value={this.state.train.food}
+                max={this.state.train.passengers}
+                text={` / ${this.state.train.passengers}`}
+              />
+              <div>Comfort:</div>
+              <Progress
+                value={this.state.train.comfort}
+                max={this.state.train.passengers}
+                text={` / ${this.state.train.passengers}`}
+              />
+              <div>Entertainment:</div>
+              <Progress
+                value={this.state.train.entertainment}
+                max={this.state.train.passengers}
+                text={` / ${this.state.train.passengers}`}
+              />
+              <div>Facilities:</div>
+              <Progress
+                value={this.state.train.facilities}
+                max={this.state.train.passengers}
+                text={` / ${this.state.train.passengers}`}
+              />
+              <div>Happiness:</div>
+              <Progress
+                value={this.state.train.happiness}
+                max={this.state.train.maxHappiness}
+                text={` / ${this.state.train.maxHappiness}`}
+              />
             </div>
           </div>
         </div>

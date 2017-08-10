@@ -2,26 +2,26 @@ import React from 'react';
 
 function Progress(props) {
   
-  const value = (props.value / props.max) * 100;
-  
   // Add:
-  // colors
-  // label
-  // striped or not
-  // animated or not
   // stacked???
-  
+
+  const width = props.value > props.max ? 100 : (props.value / props.max) * 100;
+  const color = props.color ? ' progress-bar-' + props.color : '';
+  const striped = props.striped ? ' progress-bar-striped' : '';
+  const animated = props.animated ? ' active' : '';
+
   return (
     <div className="progress">
-      <div 
-      className="progress-bar" 
-      role="progressbar" 
-      aria-valuenow={value} 
-      aria-valuemin="0" 
-      aria-valuemax={props.max} 
-      style={{ width: value + '%', minWidth: '1em' }}>
+      <div
+        className={`progress-bar${color}${striped}${animated}`}
+        role="progressbar"
+        aria-valuenow={props.value}
+        aria-valuemin="0"
+        aria-valuemax={props.max}
+        style={{ width: width + '%', minWidth: '1em' }}
+      >
         <span className={props.noValue ? 'sr-only' : ''} >
-          {value}
+          {props.value} {props.text}
         </span>
       </div>
     </div>
